@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Analyzer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Text Analyzer</h1>
+            <p class="subtitle">Ask questions about highlighted text</p>
+        </div>
+        
+        <div class="selected-text-container" id="selectedTextContainer" style="display: none;">
+            <div class="selected-text-header">
+                <span class="label">Selected Text:</span>
+                <div class="button-group">
+                    <button class="refresh-btn" id="refreshSelection" title="Refresh selected text">↻</button>
+                    <button class="clear-btn" id="clearSelection">Clear</button>
+                </div>
+            </div>
+            <div class="selected-text" id="selectedText"></div>
+        </div>
+        
+        <div class="input-container">
+            <textarea 
+                id="questionInput" 
+                placeholder="Ask a question about the highlighted text..."
+                rows="3"
+            ></textarea>
+            <div class="text-input-section" style="display: none;">
+                <label for="customTextInput">Or enter your own text:</label>
+                <textarea 
+                    id="customTextInput" 
+                    placeholder="Enter text to analyze..."
+                    rows="2"
+                ></textarea>
+            </div>
+            <button id="askButton" class="ask-button" >
+                <span class="button-text">Ask AI</span>
+                <span class="loading-spinner" style="display: none;"></span>
+            </button>
+        </div>
+        
+        <div class="response-container" id="responseContainer" style="display: none;">
+            <div class="response-header">
+                <span class="label">AI Response:</span>
+                <button class="copy-btn" id="copyResponse">Copy</button>
+            </div>
+            <div class="response-content" id="responseContent"></div>
+        </div>
+        
+        <div class="footer">
+            <div class="usage-info">
+                <span id="usageCount">0</span> questions today
+            </div>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

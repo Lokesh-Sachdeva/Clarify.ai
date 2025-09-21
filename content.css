@@ -1,0 +1,12 @@
+/* Content script styles - minimal to avoid conflicts */
+
+/* Highlight selected text with a subtle background */
+::selection {
+    background-color: rgba(46, 117, 204, 0.2);
+}
+
+/* Custom selection highlight for the extension */
+.ai-text-analyzer-highlight {
+    background-color: rgba(46, 117, 204, 0.2);
+    border-radius: 2px;
+}

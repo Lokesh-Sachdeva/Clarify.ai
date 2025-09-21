@@ -1,0 +1,25 @@
+{
+    "name": "Clarify.AI",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "description": "Highlight text and ask AI questions with context",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab",
+        "storage",
+        "contextMenus",
+        "scripting"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"],
+            "css": ["content.css"]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
