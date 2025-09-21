@@ -3,8 +3,20 @@
     "version": "1.0.0",
     "manifest_version": 3,
     "description": "Highlight text and ask AI questions with context",
+    "icons": {
+        "16": "Clarify_logo.png",
+        "32": "Clarify_logo.png",
+        "48": "Clarify_logo.png",
+        "128": "Clarify_logo.png"
+    },
     "action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "Clarify_logo.png",
+            "32": "Clarify_logo.png",
+            "48": "Clarify_logo.png",
+            "128": "Clarify_logo.png"
+        }
     },
     "permissions": [
         "activeTab",

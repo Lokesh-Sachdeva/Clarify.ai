@@ -233,7 +233,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayResponse(response) {
-        responseContent.textContent = response.answer;
+        // Convert markdown-like formatting to HTML
+        let formattedText = response.answer
+            // Convert **bold** to <strong>bold</strong>
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            // Convert *italic* to <em>italic</em>
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            // Convert bullet points (- or * at start of line)
+            .replace(/^[\s]*[-*]\s+(.+)$/gm, '<li>$1</li>')
+            // Convert numbered lists (1. 2. etc.)
+            .replace(/^[\s]*\d+\.\s+(.+)$/gm, '<li>$1</li>')
+            // Wrap consecutive <li> elements in <ul>
+            .replace(/(<li>.*<\/li>)(\s*<li>.*<\/li>)*/g, function(match) {
+                return '<ul>' + match + '</ul>';
+            })
+            // Convert line breaks to <br> tags (but not inside lists)
+            .replace(/\n(?![<\s])/g, '<br>')
+            // Convert double line breaks to paragraphs
+            .replace(/\n\n/g, '</p><p>')
+            // Wrap in paragraph tags
+            .replace(/^/, '<p>')
+            .replace(/$/, '</p>');
+        
+        // Use innerHTML instead of textContent
+        responseContent.innerHTML = formattedText;
         responseContainer.style.display = 'block';
         
         // Scroll to response
